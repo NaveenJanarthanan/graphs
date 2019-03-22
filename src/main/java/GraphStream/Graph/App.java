@@ -41,9 +41,36 @@ public class App  {
 	static Graph graph = new MultiGraph("Tut", false, true);
 	static Dijkstra dijkstra = new Dijkstra(Dijkstra.Element.EDGE, null, "weight");
 	
-	static APSP apsp = new APSP();
 	
-	static JSplitPane splitPane;
+	private JFrame f;
+	private JPanel p;
+	private JButton b1;
+	private JLabel lab;
+	
+	public App() {
+		gui();
+	}
+	
+	public void gui() {
+		f = new JFrame("Graph");
+		f.setVisible(true);
+		f.setSize(600,400);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		p = new JPanel();
+		p.setBackground(Color.YELLOW);
+		
+		b1 = new JButton("test");
+		lab = new JLabel("This is test label");
+		
+		p.add(b1);
+		p.add(lab);
+		
+		f.add(p,BorderLayout.WEST);
+	}
+	
+	
+	//static JSplitPane splitPane;
 	
 	static JFrame frame = new JFrame();
 	
@@ -61,6 +88,8 @@ public class App  {
     private static boolean isFirst = true;
     
 	public static void main(String args[]) {
+		
+		new App();
 		System.setProperty("org.gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer"); 
 		
 		
@@ -174,12 +203,12 @@ public class App  {
 		  
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        
-	        splitPane = new JSplitPane();
+	        //splitPane = new JSplitPane();
 	        
 	      //  getContentPane().setLayout(new Gridlayout());
 	        
 	        
-	       /* JPanel panel1 = new JPanel(new GridLayout()){
+	        JPanel panel1 = new JPanel();/*(new GridLayout()){
 	            @Override
 	            public Dimension getPreferredSize() {
 	                return new Dimension(100, 100);
@@ -187,14 +216,14 @@ public class App  {
 	        }; */
 	        
 	        
-	        frame.add(buttonLayout);
-	        frame.add(buttonDijkastras);
-	        frame.add(buttonPrims);
-	        frame.add(buttonClear);
-	        buttonClear.setBounds(10, 100, 90, 30);
-	        buttonDijkastras.setBounds(10, 50, 90, 30);
-	        buttonPrims.setBounds(10, 10, 90, 30);
-	        buttonLayout.setBounds(10, 150, 90, 30);
+	        panel1.add(buttonLayout);
+	        panel1.add(buttonDijkastras);
+	        panel1.add(buttonPrims);
+	        panel1.add(buttonClear);
+	        //buttonClear.setBounds(10, 100, 90, 30);
+	        //buttonDijkastras.setBounds(10, 50, 90, 30);
+	        //buttonPrims.setBounds(10, 10, 90, 30);
+	        //buttonLayout.setBounds(10, 150, 90, 30);
 	        
 	        String filename = null;
 	        File file;
@@ -271,7 +300,7 @@ public class App  {
 		
 		
 		
-		   		panel.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
+		   		panel.setBorder(BorderFactory.createLineBorder(Color.black, 3));
 		      
 	       
 	       
@@ -280,7 +309,7 @@ public class App  {
 		        viewer.enableAutoLayout();
 		        panel.add(viewPanel);
 		        frame.add(panel);
-		        //frame.add(panel);
+		        frame.add(panel1,BorderLayout.SOUTH);
 		        frame.pack();
 		        frame.setLocationRelativeTo(null);
 		        frame.setVisible(true);
